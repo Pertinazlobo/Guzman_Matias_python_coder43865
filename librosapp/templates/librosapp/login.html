@@ -1,0 +1,19 @@
+{% extends "librosapp/index.html" %}
+{% load static %}
+{% block titulo %}Login{% endblock titulo %}
+{% block cabecera %}Login {% endblock cabecera %}
+
+
+{% block contenido %}
+<form method="post">
+     <h4>Login</h4>
+     <br>
+     <table>
+          {% csrf_token %}
+          {{ form.as_table }}
+     </table>
+     <br>
+     <button type="submit">iniciar Sesion</button>
+</form>
+<br>
+{% endblock contenido %}

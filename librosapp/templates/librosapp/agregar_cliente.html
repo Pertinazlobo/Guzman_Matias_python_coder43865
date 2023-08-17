@@ -1,0 +1,22 @@
+{% extends 'librosapp/index.html' %}
+{% load static %}
+
+{% block titulo %}
+Agregar Cliente
+{% endblock titulo %}
+
+{% block  cabecera %}
+Agregar Cliente
+{% endblock cabecera %}
+
+{% block contenido %}
+<h2> Datos del cliente</h2><br>
+<form method="post">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+</table><br>
+    <input type="submit" value="Guardar">
+</form>
+<br> 
+{% endblock contenido %}

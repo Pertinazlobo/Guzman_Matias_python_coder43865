@@ -1,0 +1,20 @@
+{% extends 'librosapp/index.html' %}
+{% load static %}
+
+{% block titulo %}
+Agregar Libro
+{% endblock titulo %}
+
+{% block cabecera %}
+Agregar Libro
+{% endblock cabecera %}
+
+{% block contenido %}
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Guardar">
+</form>
+<br>
+{% endblock contenido %}

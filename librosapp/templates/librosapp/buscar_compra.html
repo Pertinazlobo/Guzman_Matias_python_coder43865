@@ -1,0 +1,62 @@
+{% extends 'librosapp/index.html' %}
+{% load static %}
+
+{% block titulo %}
+Búsqueda de Compra
+{% endblock titulo %}
+
+{% block cabecera %}
+Búsqueda de Compra
+{% endblock cabecera %}
+
+{% block contenido %}
+<br>
+<table>
+    <tr>
+        <td>
+            <div>
+                <a href="{% url 'agregar_compra' %}" button type="submit" class="btn btn-primary">Agregar Compra</a>
+            </div>
+        </td>
+    </tr>
+</table>
+<br>
+<br>
+<h4><b>Listado de compras:</b></h4>
+</div>
+{% if compras %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Cliente</th>
+            <th>Libro</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for compra in compras %}
+        <tr>
+            <td>{{ compra.cliente }}</td>
+            <td>{{ compra.libro }}</td>
+            <td>
+            <td style="text-align: right;">
+                <div style="position: relative; right: 1cm;">
+                    <a href="{% url 'actualizar_compra' compra.id %}" class="btn btn-primary"
+                        style="width: 70px; height: 40px; display: inline-flex; justify-content: center; align-items: center; margin-right: 10px;">
+                        <i class="fa fa-edit fa-lg" title="Editar Registro"></i>
+                    </a>
+
+                    <a href="{% url 'borrar_compra' compra.id %}" class="btn btn-danger"
+                        style="width: 70px; height: 40px; display: inline-flex; justify-content: center; align-items: center;">
+                        <i class="fa fa-trash fa-lg" title="Eliminar Registro"></i>
+                    </a>
+                </div>
+            </td>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No se encontraron ventas para el cliente ingresado.</p>
+{% endif %}
+{% endblock contenido %}

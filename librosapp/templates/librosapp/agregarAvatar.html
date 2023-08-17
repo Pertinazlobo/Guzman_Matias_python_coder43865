@@ -1,0 +1,26 @@
+{% extends 'librosapp/index.html' %}
+{% load static %}
+
+{% block titulo %}
+Agregar Avatar
+{% endblock titulo %}
+
+{% block cabecera %}
+Agregar Avatar
+{% endblock cabecera %}
+
+{% block contenido %}
+<br>
+<div>
+    <form method="post" enctype="multipart/form-data">
+        <h4><b>Cargar Avatar</b></h4>
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <br>
+        <button type="submit">Agregar Avatar</button>
+    </form>
+</div>
+<br>
+{% endblock contenido %}

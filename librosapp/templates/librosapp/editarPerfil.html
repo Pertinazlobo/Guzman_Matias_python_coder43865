@@ -1,0 +1,20 @@
+{% extends "librosapp/index.html" %}
+{% load static %}
+{% block titulo %}Editar Usuario{% endblock titulo %}
+{% block cabecera %}Editar Usuario {% endblock cabecera %}
+
+
+{% block contenido %}
+<br>
+<div>
+     <form method="post">
+          <h4><b>Datos del Usuario</b></h4>
+          {% csrf_token %}
+          <table>
+               {{ form.as_table }}
+          </table>
+          <br>
+          <button type="submit">Actualizar Perfil</button>
+     </form>
+</div><br>
+{% endblock contenido %}

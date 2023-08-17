@@ -1,0 +1,74 @@
+{% extends 'librosapp/index.html' %}
+{% load static %}
+
+{% block titulo %}
+Libro
+{% endblock titulo %}
+
+{% block cabecera %}
+Listado de libros
+{% endblock cabecera %}
+
+{% block contenido %}
+<br>
+<table>
+    <tr>
+        <td>
+            <div>
+                <a href="{% url 'agregar_libro' %}" button type="submit" class="btn btn-primary">Agregar Libro</a>
+            </div>
+        </td>
+    </tr>
+</table>
+<br>
+<form method="post">
+    <h4><b>Listado de Libros</b></h4>
+    <br>
+    <h6><b>Búsqueda por Libro</b></h6>
+    {% csrf_token %}
+    {{ form.as_table }}
+    <button type="submit">Buscar</button>
+</form>
+<br>
+{% if resultados %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>titulo</th>
+            <th>Autor</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for libro in resultados %}
+        <tr>
+            <td>{{ libro.titulo }}</td>
+            <td>{{ libro.autor }}</td>
+            <td>${{ libro.precio }}</td>
+            <td style="text-align: right;">
+                <div style="position: relative; right: 2cm;">
+                    <a href="{% url 'actualizar_libro' libro.id %}" class="btn btn-primary"
+                        style="width: 70px; height: 40px; display: inline-flex; justify-content: center; align-items: center; margin-right: 5px;">
+                        <i class="fa fa-edit fa-lg" title="Editar Registro"></i>
+                    </a>
+
+                    <a href="{% url 'borrar_libro' libro.id %}" class="btn btn-danger"
+                        style="width: 70px; height: 40px; display: inline-flex; justify-content: center; align-items: center;">
+                        <i class="fa fa-trash fa-lg" title="Eliminar Registro"></i>
+                    </a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<br>
+<br>
+{% else %}
+<p>No se encontraron resultados.</p>
+{% endif %}
+{% endblock contenido %}
+
+{% block contact %}
+
+{% endblock contact %}
